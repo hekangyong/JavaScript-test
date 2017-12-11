@@ -1,0 +1,40 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="UTF-8">
+    <title>无标题文档</title>
+    <script language="JavaScript" type="text/javascript">
+        var second = 5000; //间隔时间5秒钟
+        var c = 0;
+        function scroll() {
+            c++;
+            if ("b" == document.activeElement.id) {
+                var str = "定时检查第<b> " + c + " </b>次<br/>";
+                if (document.getElementById('b').value != "") {
+                    str += "输入框当前内容为当前内容为<br/><b> " + document.getElementById('b').value + "</b>";
+                }
+                document.getElementById('word').innerHTML = str;
+            }
+        }
+
+        function count() {
+            document.getElementById('m').innerHTML = "计时已经开始！";
+            setTimeout("alert('十秒钟到！')", 10000)
+        }
+    </script>
+</head>
+
+<body>
+    <textarea id="b" name="b" style="height:100px; width:300px;" onfocus="setInterval('scroll()',second)"></textarea>
+    <br/>
+    <br/>
+    <div id="word"></div>
+    <br/>
+    <br/>
+
+    <div id="m"></div>
+    <input TYPE="button" value=" 计时开始" onclick="count()">
+</body>
+
+</html>

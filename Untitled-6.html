@@ -1,0 +1,61 @@
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <style type="text/css">
+        #did {
+            width: 1024px;
+            height: 768px;
+            background-color: red;
+            position: relative;
+            overflow: hidden;
+        }
+
+        #mid {
+            width: 50px;
+            height: 50px;
+            background-color: green;
+            top: 200px;
+            left: 150px;
+            position: absolute;
+        }
+    </style>
+
+</head>
+
+<body>
+    <h2>键盘上下键控制移动</h2>
+    <div id="did">
+        <div id="mid">
+
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        //通过id获取mid
+        var mid = document.getElementById("mid");
+        //给mid设置事件的监听
+        window.document.onkeydown = function (ent) {
+            var event = ent || window.event;
+            switch (event.keyCode) {
+                case 37: //左
+                    mid.style.left = Math.max(0, mid.offsetLeft - 10) + "px";
+                    break;
+                case 38: //上
+                    mid.style.top = Math.max(0, mid.offsetTop - 10) + "px";
+                    break;
+                case 39: //右
+                    mid.style.left = Math.min(974, mid.offsetLeft + 10) + "px";
+                    break;
+                case 40: //下
+                    mid.style.top = Math.min(718, mid.offsetTop + 10) + "px";
+                    break;
+
+            }
+        }
+    </script>
+
+</body>
+
+</html>

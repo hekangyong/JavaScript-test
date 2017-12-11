@@ -1,0 +1,17 @@
+
+*{margin:0;padding:0;}
+.startView{width:520px;height:600px;background:#f52e4c;position:relative;color:#fff;font-weight:bold;font-size: 50px;
+    text-align:center;line-height:400px;user-select: none;-moz-user-select:none;-webkit-user-select:none;}
+.startView button{position:absolute;width:60px;height:30px;background:#ffff00;cursor:pointer;color:#000;border:none;left:230px;
+    bottom:120px;outline-style: none;border-radius:5px;line-height:30px;}
+.bodyBg{width:520px;background:#ccc;height:600px; -moz-user-select:none;-webkit-user-select:none;user-select:none;display: none;}
+.bodyBg h1{height:60px;background:#f52e4c;position:relative;z-index: 9;padding-left:20px;line-height:60px;}
+#myFly{width:40px;height:40px;background:#141313;position:absolute;top:560px;z-index:1;}
+#shell{width:10px;height:10px;background:#f52e4c;border-radius:50%;-webkit-border-radius: 50%;-moz-border-radius: 50%;
+    position:absolute;}
+#enemy{width:40px;height:40px;background:#ff0;position:absolute;border:1px solid #f52e4c;top:0;}
+.gameOver{width:520px;height:600px;background:#f52e4c;position:relative;color:#fff;font-weight:bold;font-size: 50px;
+    text-align:center;line-height:300px;display:none;-moz-user-select:none;-webkit-user-select:none;user-select:none;}
+.gameOver h1{font-size:20px;line-height:0;}
+.gameOver button{position:absolute;width:80px;height:30px;background:#ffff00;cursor:pointer;color:#000;border:none;left:220px;
+    bottom:120px;outline-style: none;border-radius:5px;line-height:30px;}

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style type="text/css">
+        *{margin:0;padding:0;}
+        .item{width:100px;height:100px;background:#f52e4c;position:absolute;top:50%;left:50%;}
+        .hit{background:#ffff00;}
+    </style>
+</head>
+<body>
+<div id="item1" class="item"></div>
+<div id="hitObj" class="item hit"></div>
+
+<script type="text/javascript">
+window.onload = initHit();
+function initHit(){
+
+
+
+//*******************************碰撞检测**************************************************//
+    var item1 = document.getElementById("item1"),
+        hitObj = document.getElementById("hitObj");
+    document.onmousemove = function(event){
+        var e = event || window.event;
+        item1.style.left = e.clientX - 50 + "px";
+        item1.style.top = e.clientY - 50 + "px";
+        hitTestObject(item1,hitObj);
+    }
+    function hitTestObject(item1,hitObj){
+        /*检测碰撞元素上下左右的位置*/
+        var itemTop = item1.offsetTop,
+            itemFoot = item1.offsetTop + item1.offsetHeight,
+            itemLeft = item1.offsetLeft,
+            itemRight = item1.offsetLeft + item1.offsetWidth;
+        /*被碰撞元素的上下左右的位置*/
+        var hitTop = hitObj.offsetTop,
+            hitFoot = hitObj.offsetTop + hitObj.offsetHeight,
+            hitLeft = hitObj.offsetLeft,
+            hitRight = hitObj.offsetLeft + hitObj.offsetWidth;
+        if(itemFoot > hitTop && itemRight > hitLeft && itemTop < hitFoot && itemLeft < hitRight){
+            hitObj.style.cssText = "background:#000";
+
+        }
+        //console.log(itemTop,itemFoot,itemLeft,itemRight)
+    }
+
+}
+</script>
+</body>
+</html>

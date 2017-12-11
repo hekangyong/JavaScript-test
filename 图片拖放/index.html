@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .imgs {
+            width: 200px;
+            height: 220px;
+        }
+
+        body {
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <img id="bin" src="default.png" alt="">
+    <hr>
+    <img id="item" class="imgs" src="01.jpeg" alt="">
+    <img id="item" class="imgs" src="02.jpg" alt="">
+    <img id="item" class="imgs" src="03.jpeg" alt="">
+    
+<input type="number" class="input-text qty text" step="1" min="0" max="" name="cart[6a7a7b13c2e22c0aca6edc0659f161db][qty]"
+    value="1" title="Qty" size="4" pattern="[0-9]*" inputmode="numeric">
+
+    <script type="text/javascript">
+        window.onload = function () {
+            //给原对象添加监听事件
+            var imgs = document.querySelectorAll('.imgs');
+            // console.log(imgs)
+            var bin = document.querySelector('#bin');
+            // console.log(bin)
+            for (var i = 0; i < imgs.length; i++) {
+                var pic = imgs[i];
+                pic.ondragstart = function (e) {
+                    e.dataTransfer.setData('imgID', this.id);
+                }
+            }
+            bin.ondragover = function (e) {
+                e.preventDefault();
+            }
+            bin.ondrop = function (e) {
+                var id = e.dataTransfer.getData('imgID');
+                var p = document.getElementById(id);
+                p.parentNode.removeChild(p);
+            }
+        }
+    </script>
+</body>
+
+</html>

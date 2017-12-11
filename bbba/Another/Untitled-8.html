@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        img{
+            width: 800px;
+        }
+    </style>
+</head>
+<body>
+    <h1>hello javascript</h1>
+    <img src="1.jpg" alt="">
+    <button>Change user</button>
+
+
+    <script type="text/javascript">
+        var myImg = document.querySelector("img");          //获取 img 的的标签 并且赋值给 myImg 中
+
+        myImg.onclick = function(){                         //将 myImg 变量的 onclick 的事件与一个匿名函数绑定
+            var mySrc = myImg.getAttribute("src");          //获取 src 的属性 并且赋值给 mySrc 中
+            if(mySrc === '1.jpg'){                          //判断 src  的值是否等于原始图像的路径
+                myImg.setAttribute('src','banner1.jpg');    //如果是的话将src的值改为第二张图片的路径， 强制都去另一张图片
+            }else{
+                myImg.setAttribute('src', '1.jpg');         //如果不是将改回原本图片的路径
+            }
+        }
+
+        var mybutton = document.querySelector('button');    //
+        var myHeading = document.querySelector('h1');
+
+        function setUserName(){
+            var myName = prompt("Please your Name");        //prompt 会弹出类似 alert 的对话框
+            localStorage.setItem('name',myName);            //
+            myHeading.innerHTML = 'Mozilla is cool,' + myName;
+        }
+
+        if(!localStorage.getItem('name')){
+            setUserName();
+        }else{
+            var storedName = localStorage.getItem('name');
+            myHeading.innerHTML = 'Mozilla is cool,' + storedName
+        }
+
+        mybutton.onclick = function(){
+            setUserName();
+        }
+    </script>
+</body>
+</html>

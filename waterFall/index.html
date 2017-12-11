@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Demo</title>
+  <link rel="stylesheet" href="css/animate.css">
+  <style>
+    * { margin: 0; padding: 0; }
+    body{ height: 100%; padding-top: 20px; font-family: "Microsoft Yahei"; font-size: 16px; color: #333; }
+    ul, li { list-style: none; }
+
+    #waterfall {      
+      position: relative;
+      margin: 0 auto;
+    }
+    #waterfall li {
+      overflow: hidden;
+      float: left;
+      width: 224px;
+      margin: 0 5px;
+      border: 1px solid #333;
+    }
+    #waterfall li:hover {
+      box-shadow: 0 2px 4px rgba(0, 0, 0, .3);
+    }
+    #waterfall li a {
+      display: block;
+    }
+    #waterfall li p {
+      padding: 0 10px;
+      line-height: 25px;
+      font-weight: 400;
+    }
+    #waterfall li img {
+      display: block;
+      max-width: 224px;
+      height: auto;
+    }
+  </style>
+</head>
+<body style="height: 2000px;">
+
+  <ul id="waterfall"></ul>
+
+  <script src="http://www.jq22.com/jquery/jquery-1.10.2.js"></script>
+  <script src="js/json.js"></script>
+  <script src="js/ajax.js"></script>
+  <script src="js/waterfall.js"></script>
+
+</body>
+</html>

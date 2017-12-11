@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            text-decoration: none;
+        }
+
+        body {
+            padding: 20px;
+        }
+
+        #container {
+            position: relative;
+            width: 600px;
+            height: 400px;
+            border: 3px solid #333;
+            overflow: hidden;
+        }
+
+        #list {
+            position: absolute;
+            z-index: 1;
+            width: 4200px;
+            height: 400px;
+        }
+
+        #list img {
+            float: left;
+            width: 600px;
+            height: 400px;
+        }
+
+        #buttons {
+            position: absolute;
+            left: 250px;
+            bottom: 20px;
+            z-index: 2;
+            height: 10px;
+            width: 100px;
+        }
+
+        #buttons span {
+            float: left;
+            margin-right: 5px;
+            width: 10px;
+            height: 10px;
+            border: 1px solid #fff;
+            border-radius: 50%;
+            background: #333;
+            cursor: pointer;
+        }
+
+        #buttons .on {
+            background: orangered;
+        }
+
+        .arrow {
+            position: absolute;
+            top: 180px;
+            z-index: 2;
+            display: none;
+            width: 40px;
+            height: 40px;
+            font-size: 36px;
+            font-weight: bold;
+            line-height: 39px;
+            text-align: center;
+            color: #fff;
+            background-color: RGBA(0, 0, 0, .3);
+            cursor: pointer;
+        }
+
+        .arrow:hover {
+            background-color: RGBA(0, 0, 0, .7);
+        }
+
+        #container:hover .arrow {
+            display: block;
+        }
+
+        #prev {
+            left: 20px;
+        }
+
+        #next {
+            right: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="container">
+        <div id="list" style="left: 0;">
+            <img src="photo-1422558041234-896cd9791234.jpg" alt="">
+            <img src="banner1.jpg" alt="">
+            <img src="face10.png" alt="">
+            <img src="banner1.jpg" alt="">
+            <img src="face10.png" alt="">
+        </div>
+        <div id="buttons">
+            <span index="1" class="on"></span>
+            <span index="2"></span>
+            <span index="3"></span>
+        </div>
+        <a href="javascript:;" id="prev" class="arrow"></a>
+        <a href="javascript:;" id="next" class="arrow"></a>
+    </div>
+
+
+    <script>
+                window.onload = function () {
+            var list = document.getElementById('list'); var prev = document.getElementById('prev');
+            var next = document.getElementById('next');
+            function animate(offset) {
+                //获取的是style.left，是相对左边获取距离，所以第一张图后style.left都为负值，
+                //且style.left获取的是字符串，需要用parseInt()取整转化为数字。
+                var newLeft = parseInt(list.style.left) + offset;
+                list.style.left = newLeft + 'px';
+                if (newLeft < -3000) {
+                    list.style.left = -600 + 'px';
+                }
+                if (newLeft > -600) {
+                    list.style.left = -3000 + 'px';
+                }
+            }
+            prev.onclick = function () {
+                animate(600);
+            }
+            next.onclick = function () {
+                animate(-600);
+            }
+        }
+        var timer;
+        function play() {
+            timer = setInterval(function () {
+                prev.onclick()
+            }, 1500)
+        }
+        play();
+        var container = document.getElementById('container');
+
+            function stop() {
+                clearInterval(timer);
+            }
+            container.onmouseover = stop;
+            container.onmouseout = play; 
+        window.onload = function () {
+            var list = document.getElementById("list");
+            var prev = document.getElementById("prev");
+            var next = document.getElementById("next");
+            function animate(offset){
+                
+            }
+        }
+    </script>
+</body>
+
+</html>

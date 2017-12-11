@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Snapshots</h1>
+    <ul>
+        <li>
+            <a href="1.jpg">1</a>
+        </li>
+        <li>
+            <a href="banner1.jpg">banner1</a>
+        </li>
+        <li>
+            <a href="banner9.jpg">banner9</a>
+        </li>
+        <li>
+            <a href="face10.png">face10</a>
+        </li>
+    </ul>
+    <img src="02.jpg" alt="my image gallery" id="placeholder">
+
+    <script type="text/javascript">
+        function showPic(whichpic) {
+            /* 
+                用whichpic元素调用getAttribute得到，把“href”作为参数传递给getAttribute再将路径存入路径source中
+                利用getElementById获取“占位符”图片，并赋值给变量placeholder
+                在使用setAttribute对placeholder元素的src属性进行刷新
+            */
+            var source = whichpic.getAttribute("href");
+            var placeholder = document.getElementById("placeholder");
+            placeholder.setAttribute("src",source);
+        }
+    </script>
+</body>
+</html>

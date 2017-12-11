@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/base.css">
+</head>
+
+<body>
+    <div class="wapper">
+        <div class="container">
+            <h1>Welcome</h1>
+            <form action="#" class="form">
+                <input type="text" placeholder="Username">
+                <input type="password" placeholder="Password">
+                <button type="submit" id="login-button">Login</button>
+            </form>
+        </div>
+
+        <ul class="bg-bubbles">
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </div>
+
+    <script type="text/javascript" src="js/jquery-2.1.1.min.js"></script>
+    <script>
+    $(function(){
+        $("#login-button").click(function(event){
+            event.preventDefault();
+            $("form").fadeOut(500);
+            $('.wapper').addClass('form-success');
+        })
+    })
+    </script>
+</body>
+
+</html>
