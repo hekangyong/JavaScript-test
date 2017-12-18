@@ -1,22 +1,88 @@
-<!DOCTYPE html>
+<!DOCTYPE HTML>
 <html>
 
 <head>
     <meta charset="utf-8">
-    <title>Test</title>
-    <script type="text/javascript" src="jquery-3.1.1.min.js"></script>
-    <script type="text/javascript">
-    </script>
+    <title>test</title>
+    <style type="text/css">
+        #div1 {
+            width: 100px;
+            height: 100px;
+            background: #ccc;
+            position: absolute;
+            ;
+
+        }
+    </style>
+
 </head>
 
 <body>
-    <h1>What you buy</h1>
-    <p title="a gentke reminder">Don't forget to buy this stuff.</p>
-    <ul id="purchases">
-        <li>A tin of beans</li>
-        <li class="sale">cheese</li>
-        <li class="sale important">Milk</li>
-    </ul> 
+    <div id="div1"></div>
+    <script type="text/javascript">
+        var oDiv = document.getElementById('div1');
+        var left = false;
+        var right = false;
+        var up = false;
+        var dw = false;
+        setInterval(function () {
+            if (left) {
+                console.log(oDiv)
+                oDiv.style.left = oDiv.offsetLeft - 5 + 'px';
+            }
+            else if (up) {
+                oDiv.style.top = oDiv.offsetTop - 5 + 'px';
+            }
+            else if (right) {
+                console.log(oDiv);
+                oDiv.style.left = oDiv.offsetLeft + 5 + 'px';
+
+            }
+            else if (dw) {
+                oDiv.style.top = oDiv.offsetTop + 10 + 'px';
+            }
+        }, 10)
+
+        document.onkeydown = function (ev) {
+            var ev = ev || event;
+            var code = ev.keyCode;
+            switch (code) {
+                case 37:
+                    left = true;
+                    break;
+                case 38:
+                    up = true;
+                    break;
+                case 39:
+                    right = true;
+                    break;
+                case 40:
+                    dw = true;
+                    break;
+            }
+        }
+
+        document.onkeyup = function (ev) {
+            var ev = ev || event;
+            var code = ev.keyCode;
+            switch (code) {
+                case 37:
+                    left = false;
+                    break;
+                case 38:
+                    up = false;
+                    break;
+                case 39:
+                    right = false;
+                    break;
+                case 40:
+                    dw = false;
+                    break;
+            }
+
+        }
+
+    </script>
 </body>
 
 </html>

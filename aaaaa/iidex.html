@@ -1,0 +1,50 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head>
+<script>
+    function $(id) {
+        return (document.getElementById(id));
+    }
+
+    var keybuf = {};
+
+    function keydown(e) {
+        var evt = e || window.event;
+        var o = $("div1");
+        keybuf[evt.keyCode] = true;
+        whatIsDown();
+    }
+
+    function keyup(e) {
+        var evt = e || window.event;
+        var o = $("div1");
+        keybuf[evt.keyCode] = false;
+        whatIsDown();
+    }
+
+    function keypress(e) {
+        whatIsDown();
+    }
+
+    function whatIsDown() {
+        var o = $("div1");
+        var str = "";
+        for (k in keybuf) {
+            if (keybuf[k] == true) {
+                str += k + "; ";
+            }
+        }
+        o.innerHTML = str;
+    }
+</script>
+
+<body>
+    <input type="text" value="" onkeydown="keydown(event);" onkeyup="keyup(event);" onkeypress="keypress(event);" />
+    <div id="div1">
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,101 @@
+#did {
+    width: 1024px;
+    height: 768px;
+    background-image: url('../images/873441.png');
+    position: relative;
+    overflow: hidden;
+    display: none;
+}
+
+#mid {
+    /* width: px; */
+    height: 50px;
+    /* background-color: green; */
+    /* top: 200px;
+    left: 150px; */
+    position: absolute;
+}
+
+#enemy {
+    width: 40px;
+    height: 40px;
+    background: #ff0;
+    position: absolute;
+    border: 1px solid #f52e4c;
+    top: 0;
+}
+
+#strat {
+    background-color: #000;
+    width: 1024px;
+    height: 768px;
+}
+
+#startBtn {
+    background-color: transparent;
+    border: 2px solid #ffffff;
+    color: #fff;
+    border-radius: 50px;
+    padding: 13px 48px;
+    font-size: 16px;
+    letter-spacing: .8px;
+    font-weight: 300;
+    line-height: 22px;
+    position: absolute;
+    left: 421px;
+    top: 555px;
+    cursor: pointer;
+}
+
+#startH1 {
+    color: #fff;
+    margin: 0;
+    font-size: 47px;
+    letter-spacing: 4.8px;
+    line-height: 53px;
+    position: absolute;
+    left: 370px;
+    top: 315px;
+    font-weight: 100;
+}
+
+#big {
+    width: 50px;
+    height: 50px;
+    position: absolute;
+}
+
+#gameOver {
+    background-color: #000;
+    width: 1024px;
+    height: 768px;
+    color: #ffffff;
+    display: none;
+}
+
+#endH1 {
+    margin: 0 auto;
+    font-size: 47px;
+    letter-spacing: 4.8px;
+    line-height: 53px;
+    position: absolute;
+    left: 399px;
+    top: 255px;
+    font-weight: 100;
+}
+
+#inputName {
+    position: absolute;
+    left: 417px;
+    top: 329px;
+}
+
+#position {
+    position: absolute;
+    left: 404px;
+    top: 376px;
+}
+
+#submit {
+    margin-right: 15px;
+}

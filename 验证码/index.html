@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <fieldset>
+        <legend>原生JS实现随机生成字母数字验证码</legend>
+        <form action="#">
+            <label for="codes">
+                <input id="codes" class="validateCode">
+            </label>
+            <span class="code"></span>
+            <span class="refresh">
+                <img src="./images/refresh.png">
+            </span>
+            <br/>
+            <span class="wrong-show"></span>
+            <br>
+            <button class="btn" type="button">确定</button>
+        </form>
+    </fieldset>
+    <script src="js/index.js"></script>
+</body>
+
+</html>
