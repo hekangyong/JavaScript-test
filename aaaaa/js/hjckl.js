@@ -92,7 +92,7 @@ function initGame() {
         blueAll = [],
         timer = null;
     var ens = 1;
-    blueTimer = setInterval(blueHit, 20);
+    blueTimer = setInterval(blueHit, 15);
 
     function blueHit() {
         if (blueAll != null) {
@@ -110,7 +110,7 @@ function initGame() {
             }
         }
     }
-    timer = setInterval(setBlue, 4000);
+    timer = setInterval(setBlue, 5000);
 
     function setBlue() {
         blue = document.createElement('img');
