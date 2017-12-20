@@ -90,8 +90,13 @@ function initGame() {
     var blue = null,
         blueTimer = null,
         blueAll = [],
+        stars = null,
+        starsAll = [],
+        starsTimer = null,
+        scoreInt = null,
         timer = null;
     var ens = 1;
+    var speed = 2;
     blueTimer = setInterval(blueHit, 15);
 
     function blueHit() {
@@ -109,12 +114,29 @@ function initGame() {
                 }
             }
         }
+        if (stars != null) {
+            for (var j = 0; j < starsAll.length; j++) {
+                var enemySpeed = parseInt(starsAll[j].style.top.substring(0, 3));
+                enemySpeed += ens;
+                starsAll[j].style.top = enemySpeed + "px";
+                for (var z = 0; z < blueAll.length; z++) {
+                    if (hitTestObject()) {
+                        
+                    }
+                }
+            }
+        }
     }
     timer = setInterval(setBlue, 5000);
 
     function setBlue() {
+        var b = new Array(3);
+        b[0] = "images/3813_P_1456924002814.jpg";
+        b[1] = "images/20140527123329_cCGLu.jpg";
+        b[2] = "images/01300001128119146475325219223_s.jpg";
+        var c = Math.floor(Math.random() * 3);
         blue = document.createElement('img');
-        blue.setAttribute('src', 'images/snow.png');
+        blue.setAttribute('src', b[c]);
         blue.setAttribute('id', 'big');
         did.appendChild(blue);
         var i = Math.floor(Math.random() * 15) * blue.offsetHeight;
@@ -122,7 +144,20 @@ function initGame() {
         blue.style.top = i + 'px';
         blueAll.push(blue);
     }
-    // setBlue();
+
+    starsTimer = setInterval(Stars, 7000);
+
+    function Stars() {
+        stars = document.createElement('img');
+        stars.setAttribute('src', 'images/images.jpg');
+        stars.setAttribute('id', 'starsT');
+        did.appendChild(stars);
+        var i = Math.floor(Math.random() * 15) * stars.offsetWidth;
+        stars.style.top = 0;
+        stars.style.right = i + 'px';
+        starsAll.push(stars);
+    }
+    // Stars();
 
     function gameOver() {
         clearInterval(blueTimer);
@@ -130,6 +165,10 @@ function initGame() {
         for (var j = blueAll.length - 1; j >= 0; j--) {
             did.removeChild(blueAll[j]);
             blueAll.splice(j, 1);
+        }
+        for (var i = starsAll.length - 1; i >= 0; i--) {
+            did.removeChild(starsAll[i]);
+            starsAll.splice(i, 1);
         }
         var gameOver = document.getElementById('gameOver'),
             submit = document.getElementById('submit'),

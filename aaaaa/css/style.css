@@ -99,3 +99,17 @@
 #submit {
     margin-right: 15px;
 }
+
+#starsT {
+    width: 30px;
+    height: 30px;
+    position: absolute;
+}
+#scrose{
+    font-size: 25px;
+    font-weight: 500;
+    line-height: 30px;
+    letter-spacing: 3.8;
+    margin: 20px 0 0 ;
+    color: #ffffff;
+}

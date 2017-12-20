@@ -7,33 +7,29 @@
 </head>
 
 <body>
-    <button id="btn1">调用第一种</button>
-    <button id="bnt2">调用第二种</button>
-    <button id="btn3">调用第三种</button>
+    <button type="button" onclick="display()" value="OK">aa</button>
+    <div id="x" style="background:none;height:300px;">uiyuiyi</div>
+    <div id="dasdas"></div>
     <script>
-        var btn1 = document.getElementById('btn1');
-        btn1.onclick = function () {
-            document.body.style.background = bg1()
-        };
-        var btn2 = document.getElementById('bnt2');
-        btn2.onclick = function () {
-            document.body.style.background = bg2();
-        };
-        var btn3 = document.getElementById('btn3');
-        btn3.onclick = function () {
-            document.body.style.background = bg3();
-        };
-        function bg1() {
-            return '#' + Math.floor(Math.random() * 256).toString(10);
-        }
-        function bg2() {
-            return '#' + Math.floor(Math.random() * 0xffffff).toString(16);
-        }
-        function bg3() {
-            var r = Math.floor(Math.random() * 256);
-            var g = Math.floor(Math.random() * 256);
-            var b = Math.floor(Math.random() * 256);
-            return "rgb(" + r + ',' + g + ',' + b + ")";//所有方法的拼接都可以用ES6新特性`其他字符串{$变量名}`替换
+        function display() {
+            var a = document.getElementById('x');
+            var b = new Array(10);
+            b[0] = "images/3813_P_1456924002814.jpg";
+            b[1] = "images/20140527123329_cCGLu.jpg";
+            b[2] = "images/01300001128119146475325219223_s.jpg";
+            b[3] = "images/c2cf2dc539707a77ca40b8afe64ab1c1.jpg";
+            b[4] = "images/Certificate0018305.jpeg";
+            b[5] = "images/images.jpg";
+            b[6] = "images/v2-46bcc1db7af5bc2878ac4ac7134cd674_b.jpg";
+            b[7] = "images/873441.png";
+            b[8] = "images/ff5.jpg";
+            b[9] = "images/user.jpg";
+            var c = Math.floor(Math.random() * 10);
+            var A = document.createElement('img');
+            A.setAttribute('src',b[c]);
+            A.setAttribute('id', 'aa');
+            // a.style.background="url("+b[c]+")";
+            a.appendChild(A);
         }
     </script>
 </body>
