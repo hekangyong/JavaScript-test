@@ -29,9 +29,13 @@ function init() {
 var strat = document.getElementById('strat'),
     startBtn = document.getElementById('startBtn'),
     mid = document.getElementById('mid'),
-    did = document.getElementById('did');
+    score = document.getElementById('scrose')
+did = document.getElementById('did');
 
 function initGame() {
+
+    // var game = setTimeout(gameOver(),10000);
+
     var left = null,
         right = null,
         top = null,
@@ -95,10 +99,10 @@ function initGame() {
         starsTimer = null,
         scoreInt = null,
         timer = null;
+
     var ens = 1;
     var speed = 2;
     blueTimer = setInterval(blueHit, 15);
-
     function blueHit() {
         if (blueAll != null) {
             for (var i = 0; i < blueAll.length; i++) {
@@ -114,21 +118,34 @@ function initGame() {
                 }
             }
         }
-        if (stars != null) {
+        if (starsAll != null) {
             for (var j = 0; j < starsAll.length; j++) {
                 var enemySpeed = parseInt(starsAll[j].style.top.substring(0, 3));
                 enemySpeed += ens;
                 starsAll[j].style.top = enemySpeed + "px";
-                for (var z = 0; z < blueAll.length; z++) {
-                    if (hitTestObject()) {
-                        
+                if (hitTestObject(mid, starsAll[j]) == true) {
+                    // console.log('aaaa');
+                    did.removeChild(starsAll[j]);
+                    starsAll.splice(j, 1);
+                    scoreInt++;
+                    if (scoreInt % 5 == 0) {
+                        if (ens < 15) {
+                            ens++;
+                        }
+                        if (timer >= 400) {
+                            timer -= 200;
+                            clearInterval(timer);
+                            timer = setInterval(Stars, timer);
+                        }
                     }
+                    score.innerHTML = '收集到的星星数量：' + scoreInt;
                 }
             }
         }
     }
-    timer = setInterval(setBlue, 5000);
 
+    var starsTime = 2000;
+    timer = setInterval(setBlue, 5000);
     function setBlue() {
         var b = new Array(3);
         b[0] = "images/3813_P_1456924002814.jpg";
@@ -146,7 +163,6 @@ function initGame() {
     }
 
     starsTimer = setInterval(Stars, 7000);
-
     function Stars() {
         stars = document.createElement('img');
         stars.setAttribute('src', 'images/images.jpg');
@@ -162,6 +178,7 @@ function initGame() {
     function gameOver() {
         clearInterval(blueTimer);
         clearInterval(timer);
+        clearInterval(starsTimer);
         for (var j = blueAll.length - 1; j >= 0; j--) {
             did.removeChild(blueAll[j]);
             blueAll.splice(j, 1);
@@ -172,13 +189,16 @@ function initGame() {
         }
         var gameOver = document.getElementById('gameOver'),
             submit = document.getElementById('submit'),
+            inerScore = document.getElementById('iverScore'),
             restart = document.getElementById('restart');
+        inerScore.innerHTML = '收集到的星星数量：' + scoreInt;
         gameOver.style.cssText = 'display:block';
         did.style.cssText = 'display:none';
         restart.onclick = function () {
             initGame();
             gameOver.style.cssText = 'display:none';
             did.style.cssText = 'display:block';
+            score.innerHTML = '收集到的星星数量：' + 0;
             restart.onclick = null;
         }
     }

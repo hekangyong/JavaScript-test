@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        button:hover {
+            cursor: pointer;
+        }
+    </style>
+    <script>
+        var game_time; //游戏总时长
+        var game_start; //游戏开始时间
+        var djs_span; //显示倒计时
+        var id; //计时器id
+        var game_djs; //游戏倒计时
+        var isZT = false; //判断是否为暂停，false表示未点击暂停
+        var zt_time; //暂停时的倒计时值
+        var jx_id; //继续游戏的倒计时id
+        var startBtn; //游戏开始按钮
+
+        window.onload = function () {
+
+            djs_span = document.getElementById("djs");
+            //暂停游戏
+            var zt = document.getElementById("zt");
+            //开始游戏
+            startBtn = document.getElementById("btn");
+
+            startBtn.onclick = function () {
+
+                clearTimeout(jx_id);
+
+                if (isZT) {
+                    var reset = confirm("您的游戏正在进行中，确定要重新开始吗？");
+                    if (reset) {
+                        zt.textContent = "暂停游戏";
+                        isZT = false;
+                    } else {
+                        return;
+                    }
+                }
+
+                //获取游戏总时长
+                game_time = document.getElementById("time").value * 60;
+                //记录游戏开始时间
+                game_start = new Date();
+                //禁用开始按钮
+                startBtn.disabled = true;
+                djs();
+            }
+
+            //停止游戏
+            document.getElementById("stop").onclick = function () {
+                game_stop();
+                //还原开始按钮
+                startBtn.disabled = false;
+            }
+
+            zt.onclick = function () {
+                game_zt();
+                if (isZT) {
+                    //点击继续按钮
+                    zt.textContent = "暂停游戏";
+                    isZT = false;
+                    //禁用开始按钮
+                    startBtn.disabled = true;
+                    //记录继续游戏开始时间
+                    game_start = new Date();
+                    game_jx();
+                } else {
+                    //点击暂停按钮
+                    zt.textContent = "继续游戏";
+                    isZT = true;
+                    //还原开始按钮
+                    startBtn.disabled = false;
+                    //记录暂停时间
+                    zt_time = game_djs;
+                    game_zt();
+                }
+            }
+        }
+
+
+        //倒计时方法
+        function djs() {
+
+            //获取游戏进行时
+            var playing = new Date();
+
+            game_djs = game_time - parseInt((playing - game_start) / 1000);
+
+            djs_span.innerHTML = game_djs;
+
+            id = setTimeout("djs()", 1000); //步长
+
+            //游戏结束
+            if (game_djs < 1) {
+                clearTimeout(id);
+                alert("游戏结束");
+            }
+
+        }
+
+        //暂停游戏
+        function game_zt() {
+            clearTimeout(id);
+            clearTimeout(jx_id);
+        }
+
+        //继续游戏
+        function game_jx() {
+            //获取游戏进行时
+            var playing = new Date();
+
+            game_djs = zt_time - parseInt((playing - game_start) / 1000);
+
+            djs_span.innerHTML = game_djs;
+
+            jx_id = setTimeout("game_jx()", 1000); //步长
+
+            //游戏结束
+            if (game_djs < 1) {
+                clearTimeout(jx_id);
+                alert("游戏结束");
+            }
+        }
+
+        //游戏结束
+        function game_stop() {
+            clearTimeout(id);
+            clearTimeout(jx_id);
+            game_djs = 0;
+            djs_span.innerHTML = game_djs;
+        }
+    </script>
+
+</head>
+
+<body>
+
+    游戏时长：
+    <input id="time" type="text" size="5px" value="1" />分钟
+    <br /> 游戏倒计时：
+    <span id="djs"></span>秒
+    <br />
+    <button id="btn">开始游戏</button>
+    <button id="zt">暂停游戏</button>
+    <button id="stop">停止游戏</button>
+
+</body>
+
+</html>

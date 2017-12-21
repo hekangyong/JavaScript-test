@@ -105,11 +105,24 @@
     height: 30px;
     position: absolute;
 }
-#scrose{
+
+#scrose {
     font-size: 25px;
     font-weight: 500;
     line-height: 30px;
-    letter-spacing: 3.8;
-    margin: 20px 0 0 ;
+    letter-spacing: 3.8px;
+    margin: 20px 0 0;
     color: #ffffff;
+}
+
+#iverScore {
+    font-size: 25px;
+    font-weight: 500;
+    line-height: 30px;
+    letter-spacing: 3.8px;
+    margin: 20px 0 0;
+    color: #ffffff;
+    position: absolute;
+    left: 359px;
+    top: 400px;
 }
