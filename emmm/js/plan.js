@@ -1,4 +1,4 @@
-window.onload = init;
+
 
 /* 初始化界面 */
 function init() {
@@ -26,6 +26,7 @@ function init() {
         initGame();
     }
 }
+window.onload = init;
 var myFly = document.getElementById('myFly'),
     bodyBg = document.getElementById('bodyBg'),
     score = document.getElementById('score');

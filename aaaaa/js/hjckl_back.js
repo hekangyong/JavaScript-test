@@ -99,9 +99,6 @@ function initGame() {
         starsAll = [],
         starsTimer = null,
         scoreInt = null,
-        fuel = null,
-        fuelTime = null,
-        fuelAll = [],
         newBgPosTime = null,
         timer = null;
 
@@ -146,27 +143,6 @@ function initGame() {
                     }
                     score.innerHTML = '收集到的星星数量：' + scoreInt;
                 }
-                if (enemySpeed > 768) {
-                    did.removeChild(starsAll[j]);
-                    starsAll.splice(j, 1);
-                }
-            }
-        }
-        if (fuelAll != null) {
-            for (var z = 0; z < fuelAll.length; z++) {
-                var fuelSpeed = parseInt(fuelAll[z].style.top.substring(0, 3));
-                fuelSpeed += ens;
-                fuelAll[z].style.top = fuelSpeed + 'px';
-                if (hitTestObject(mid, fuelAll[z]) == true) {
-                    // console.log('加持时间');
-                    did.removeChild(fuelAll[z]);
-                    fuelAll.splice(z, 1);
-                    
-                }
-                if (fuelSpeed > 768) {
-                    did.removeChild(fuelAll[z]);
-                    fuelAll.splice(z, 1);
-                }
             }
         }
     }
@@ -176,7 +152,7 @@ function initGame() {
 
     function setBlue() {
         var b = new Array(3);
-        b[0] = "images/1.jpg";
+        b[0] = "images/3813_P_1456924002814.jpg";
         b[1] = "images/20140527123329_cCGLu.jpg";
         b[2] = "images/01300001128119146475325219223_s.jpg";
         var c = Math.floor(Math.random() * 3);
@@ -197,30 +173,17 @@ function initGame() {
         stars.setAttribute('src', 'images/images.jpg');
         stars.setAttribute('id', 'starsT');
         did.appendChild(stars);
-        var i = Math.floor(Math.random() * 30) * stars.offsetWidth;
+        var i = Math.floor(Math.random() * 15) * stars.offsetWidth;
         stars.style.top = 0;
         stars.style.right = i + 'px';
         starsAll.push(stars);
     }
 
-    fuelTime = setInterval(fire, 4000);
-
-    function fire() {
-        fuel = document.createElement('img');
-        fuel.setAttribute('src', 'images/snow.png');
-        fuel.setAttribute('id', 'starsT');
-        did.appendChild(fuel);
-        var i = Math.floor(Math.random() * 30) * fuel.offsetWidth;
-        fuel.style.top = 0;
-        fuel.style.right = i + 'px';
-        fuelAll.push(fuel);
-    }
 
     gameOvers = function () {
         clearInterval(blueTimer);
         clearInterval(timer);
         clearInterval(starsTimer);
-        clearInterval(fuelTime);
         clearTimeout(ii);
         for (var j = blueAll.length - 1; j >= 0; j--) {
             did.removeChild(blueAll[j]);
@@ -229,10 +192,6 @@ function initGame() {
         for (var i = starsAll.length - 1; i >= 0; i--) {
             did.removeChild(starsAll[i]);
             starsAll.splice(i, 1);
-        }
-        for (var z = fuelAll.length - 1; z >= 0; z--) {
-            did.removeChild(fuelAll[z]);
-            fuelAll.splice(z, 1);
         }
         gameOver = document.getElementById('gameOver'),
             submit = document.getElementById('submit'),
@@ -247,9 +206,6 @@ function initGame() {
             did.style.cssText = 'display:block';
             score.innerHTML = '收集到的星星数量：' + 0;
             restart.onclick = null;
-            gameStart = new Date();
-            djs();
-            overGame = 0;
         }
     }
 }

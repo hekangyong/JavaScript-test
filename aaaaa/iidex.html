@@ -1,50 +1,59 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html lang="en">
 
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
 </head>
-<script>
-    function $(id) {
-        return (document.getElementById(id));
-    }
-
-    var keybuf = {};
-
-    function keydown(e) {
-        var evt = e || window.event;
-        var o = $("div1");
-        keybuf[evt.keyCode] = true;
-        whatIsDown();
-    }
-
-    function keyup(e) {
-        var evt = e || window.event;
-        var o = $("div1");
-        keybuf[evt.keyCode] = false;
-        whatIsDown();
-    }
-
-    function keypress(e) {
-        whatIsDown();
-    }
-
-    function whatIsDown() {
-        var o = $("div1");
-        var str = "";
-        for (k in keybuf) {
-            if (keybuf[k] == true) {
-                str += k + "; ";
-            }
-        }
-        o.innerHTML = str;
-    }
-</script>
 
 <body>
-    <input type="text" value="" onkeydown="keydown(event);" onkeyup="keyup(event);" onkeypress="keypress(event);" />
-    <div id="div1">
-    </div>
+    <input type="button" value="开始游戏" id="startBtn">
+    <input type="button" value="重新开始游戏" id="restartBtn">
+    <input type="button" value="加持时间" id="addTime">
+    </br>
+    游戏倒计时：
+    <span id="djsaa"></span>秒
+    <script>
+        var gameTime;
+        var gameStart;
+        var overGame;
+        var ii;
+        var startBtn = document.getElementById('startBtn');
+        var restartBtn = document.getElementById('restartBtn');
+        var djsaa = document.getElementById('djsaa');
+        var addTime = document.getElementById('addTime');
+        // console.log(djsaa)
+        startBtn.onclick = function () {
+            // console.log('大家好我们又见面了!!!');
+            gameStart = new Date();
+            djs();
+        }
+
+        restartBtn.onclick = function () {
+            gameStart = new Date();
+            djs();
+        }
+
+        addTime.onclick = function () {
+            var a = 3;
+        }
+
+        function djs() {
+            // console.log('已连接到我们倒计时函数中');
+            var playing = new Date();
+            overGame = gameTime - parseInt((playing - gameStart) / 1000);
+            gameTime = 10;
+            ii = setTimeout('djs()', 1000);
+            djsaa.innerHTML = overGame;
+            if (overGame < 1) {
+                console.log('您时间到了请下机');
+                clearTimeout(ii);
+            }
+            startBtn.disabled = true;
+        }
+    </script>
 </body>
 
 </html>

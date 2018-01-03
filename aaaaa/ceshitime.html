@@ -10,7 +10,7 @@
         }
     </style>
     <script>
-        var game_time; //游戏总时长
+        var game_time = 10; //游戏总时长
         var game_start; //游戏开始时间
         var djs_span; //显示倒计时
         var id; //计时器id
@@ -43,7 +43,8 @@
                 }
 
                 //获取游戏总时长
-                game_time = document.getElementById("time").value * 60;
+                // game_time = document.getElementById("time").value * 60;
+                game_time = 10;
                 //记录游戏开始时间
                 game_start = new Date();
                 //禁用开始按钮
